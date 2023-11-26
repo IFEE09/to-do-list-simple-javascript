@@ -1,5 +1,6 @@
 <!DOCTYPE html5>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="icon" href="./assets/js.png">
     <link rel="stylesheet" href="./index.css">
 </head>
+
 <body>
     <section>
         <div class="navbar-1">
@@ -19,5 +21,16 @@
             </header>
         </div>
     </section>
+    <section>
+        <h3 class="cambia" onclick="cambiarColor(this)">Cambia de color en click</h3>
+    </section>
+
+    <script>
+        function cambiarColor(elemento) {
+            // Cambiar el color al hacer clic
+            elemento.style.color = "red";
+        }
+    </script>
 </body>
+
 </html>
