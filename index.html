@@ -3,17 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lista de tareas sencilla hecha con HTML, CSS y JavaScript puro.">
+  <meta name="color-scheme" content="light dark">
+  <title>Lista de tareas</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
-  <title>To-Do List</title>
 </head>
 <body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Mis tareas</h1>
+      <p class="today" id="today"></p>
+    </header>
 
-  <div class="container">
-    <h1>To-Do List</h1>
-    <input type="text" id="taskInput" placeholder="Nueva tarea...">
-    <button onclick="addTask()">Agregar</button>
-    <ul id="taskList"></ul>
-  </div>
+    <form class="new-task" id="newTask" autocomplete="off">
+      <label class="sr-only" for="taskInput">Nueva tarea</label>
+      <input type="text" id="taskInput" placeholder="¿Qué tienes que hacer?" maxlength="200" required>
+      <button type="submit" class="add-button">Agregar</button>
+    </form>
+
+    <div class="toolbar">
+      <p class="counter" id="counter" aria-live="polite"></p>
+      <div class="filters" role="group" aria-label="Filtrar tareas">
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">Todas</button>
+        <button type="button" class="filter" data-filter="pending" aria-pressed="false">Pendientes</button>
+        <button type="button" class="filter" data-filter="done" aria-pressed="false">Completadas</button>
+      </div>
+    </div>
+
+    <ul class="task-list" id="taskList"></ul>
+    <p class="empty" id="empty" hidden></p>
+
+    <footer class="app-footer">
+      <button type="button" class="clear-done" id="clearDone">Borrar completadas</button>
+    </footer>
+  </main>
+
+  <template id="taskTemplate">
+    <li class="task">
+      <input type="checkbox" class="task-check">
+      <span class="task-text"></span>
+      <button type="button" class="icon-button edit" aria-label="Editar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10.5-10.5a2.83 2.83 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg>
+      </button>
+      <button type="button" class="icon-button delete" aria-label="Eliminar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4h6v3"/></svg>
+      </button>
+    </li>
+  </template>
 
   <script src="script.js"></script>
 </body>
